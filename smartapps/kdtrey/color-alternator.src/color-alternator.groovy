@@ -65,16 +65,14 @@ def offHandler(evt) {
 
 def setColorHandler1(evt){
 	//sets bulb to green
-    slaves.setHue(120)
-    slaves.setSaturation(100)
+    slaves.setColor([hue: 120, saturation: 100])
     runIn(60, setColorHandler2)//changes to green in 1 minute
     sendEvent(name: "color1", value: evt, isStateChange: true)
 }
 
 def setColorHandler2(evt){
 	//sets bulb to red
-	slaves.setHue(0)
-    slaves.setSaturation(100)
+	slaves.setColor([hue:0, saturation: 100])
     runIn(60, setColorHandler1)//changes to red in 1 minute
     sendEvent(name: "color2", value: evt, isStateChange: true)
 }
