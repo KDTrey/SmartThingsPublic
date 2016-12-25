@@ -64,6 +64,7 @@ def offHandler(evt) {
 }
 
 def setColorHandler1(evt){
+	log.info "${slaves.currentColor}"
 	//sets bulb to green
     slaves.setColor([hue: 120, saturation: 100])
     runIn(60, setColorHandler2)//changes to green in 1 minute
@@ -71,6 +72,7 @@ def setColorHandler1(evt){
 }
 
 def setColorHandler2(evt){
+	log.info "${slaves.currentColor}"
 	//sets bulb to red
 	slaves.setColor([hue:0, saturation: 100])
     runIn(60, setColorHandler1)//changes to red in 1 minute
